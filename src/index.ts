@@ -1,3 +1,4 @@
-import { Add } from './Add.js';
+import { PingPong } from './PingPong.js';
+import { Fibo } from './Fibo.js';
 
-export { Add };
+export { PingPong, Fibo };
