@@ -1,8 +1,6 @@
 import { SmartContract, method, UInt64, state, State } from "o1js";
 import { FiboProof } from "./FiboProgram.js";
 
-
-
 export class Fibo extends SmartContract {
   @state(UInt64) x = State<UInt64>();
   
@@ -12,6 +10,7 @@ export class Fibo extends SmartContract {
   }
 
   @method submit(proof: FiboProof) {
+    this.account.timing
     this.x.getAndAssertEquals();
     proof.verify();
     this.x.set(proof.publicOutput);
