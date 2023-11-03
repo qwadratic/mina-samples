@@ -2,6 +2,8 @@ import { AccountUpdate, Mina } from "o1js";
 import { Counter } from "./Counter";
 import { now, randomKeyPair, testAccounts, useProof } from "./common";
 
+console.log(now(), ': started')
+
 const { 
   privateKey: deployerKey, 
   publicKey: deployerAccount 

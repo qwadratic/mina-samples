@@ -2,6 +2,8 @@ import { AccountUpdate, Mina, UInt64 } from "o1js";
 import { now, randomKeyPair, testAccounts, useProof } from "./common";
 import { Input, Loop } from "./Loop";
 
+console.log(now(), ': started')
+
 const { 
   privateKey: deployerKey, 
   publicKey: deployerAccount 

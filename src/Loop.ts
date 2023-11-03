@@ -8,9 +8,9 @@ export class Loop extends SmartContract {
   @state(UInt64) n = State<UInt64>();
 
   @method sum(secretNumbers: Input) {
-    const sum_ = UInt64.zero;
+    let sum_ = UInt64.zero;
     for (let sn of secretNumbers.value) {
-      sum_.add(sn);
+      sum_ = sum_.add(sn);
     }
     this.n.set(sum_);
   }
@@ -29,6 +29,3 @@ export class Loop extends SmartContract {
   //   }
   // }
 }
-
-
-
