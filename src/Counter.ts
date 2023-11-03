@@ -13,20 +13,4 @@ export class Counter extends SmartContract {
     this.count.set(count.add(1));
   }
 
-  // @method bad(x: UInt64, n: UInt64) {
-  //   const n0 = Number(n.toString());
-  //   for (let i = 0; i < n0; i += 1) {
-  //     x.equals(UInt64.from(i.toString())).assertFalse();
-  //   }
-  // }
-
-  // @method good1(x: UInt64) {
-  //   for (let y of [0, 1, 2]) {
-  //     x.equals(UInt64.from(y)).assertFalse();
-  //   }
-  // }
-
 }
-
-
-

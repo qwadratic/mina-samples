@@ -1,6 +1,6 @@
 import { Mina, PrivateKey } from "o1js";
 
-export const useProof = true;
+export const useProof = false;
 
 const Local = Mina.LocalBlockchain({ proofsEnabled: useProof });
 Mina.setActiveInstance(Local);

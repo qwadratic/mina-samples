@@ -21,7 +21,7 @@ export class Loop extends SmartContract {
     }
   }
 
-  // @method bad(x: Field, n: Field) {
+  // @method bad(n: UInt64) {
   //   // n is an abstract private input -> this line fails
   //   const n0 = Number(n.toString()); 
   //   for (let i = 0; i < n0; i += 1) {
