@@ -1,5 +1,5 @@
-import { AccountUpdate, Mina, UInt64 } from "o1js";
-import { now, randomKeyPair, testAccounts, useProof } from "./common";
+import { Mina, UInt64 } from "o1js";
+import { deploy, now, randomKeyPair, testAccounts, useProof } from "./common";
 import { Input, Loop } from "./Loop";
 
 console.log(now(), ': started')
@@ -25,13 +25,7 @@ if (useProof) {
 
 const zkAppInstance = new Loop(zkAppAddress);
 
-const deployTxn = await Mina.transaction(deployerAccount, () => {
-  AccountUpdate.fundNewAccount(deployerAccount);
-  zkAppInstance.deploy();
-});
-await deployTxn.prove();
-console.log(now(), ': proved deploy tx')
-await deployTxn.sign([deployerKey, zkAppPrivateKey]).send();
+await deploy(deployerAccount, deployerKey, zkAppPrivateKey, zkAppInstance);
 
 let x = zkAppInstance.n.get().toString()
 console.log(now(), ': deployed with state', x)

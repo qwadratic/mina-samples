@@ -26,3 +26,4 @@ export class IfElse extends SmartContract {
     this.n.set(n);
   }
 }
+

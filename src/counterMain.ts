@@ -1,6 +1,6 @@
-import { AccountUpdate, Mina } from "o1js";
+import { Mina } from "o1js";
 import { Counter } from "./Counter";
-import { now, randomKeyPair, testAccounts, useProof } from "./common";
+import { deploy, now, randomKeyPair, testAccounts, useProof } from "./common";
 
 console.log(now(), ': started')
 
@@ -25,13 +25,7 @@ if (useProof) {
 
 const zkAppInstance = new Counter(zkAppAddress);
 
-const deployTxn = await Mina.transaction(deployerAccount, () => {
-  AccountUpdate.fundNewAccount(deployerAccount);
-  zkAppInstance.deploy();
-});
-await deployTxn.prove();
-console.log(now(), ': proved deploy tx')
-await deployTxn.sign([deployerKey, zkAppPrivateKey]).send();
+await deploy(deployerAccount, deployerKey, zkAppPrivateKey, zkAppInstance);
 
 let x = zkAppInstance.count.get().toString()
 console.log(now(), ': deployed with state', x)
